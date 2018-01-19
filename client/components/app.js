@@ -10,12 +10,13 @@ import {logout} from '../store'
  *  else common to our entire app. The 'picture' inside the frame is the space
  *  rendered out by the component's `children`.
  */
-const Main = (props) => {
+const App = (props) => {
   const {children, handleClick, isLoggedIn} = props
 
   return (
     <div>
-      <h1>BOILERMAKER</h1>
+      <h1>owl</h1>
+      <button className="btn btn-primary">YO HIT THIS</button>
       <nav>
         {
           isLoggedIn
@@ -56,12 +57,12 @@ const mapDispatch = (dispatch) => {
 
 // The `withRouter` wrapper makes sure that updates are not blocked
 // when the url changes
-export default withRouter(connect(mapState, mapDispatch)(Main))
+export default withRouter(connect(mapState, mapDispatch)(App))
 
 /**
  * PROP TYPES
  */
-Main.propTypes = {
+App.propTypes = {
   children: PropTypes.object,
   handleClick: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired

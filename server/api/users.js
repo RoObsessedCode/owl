@@ -12,3 +12,5 @@ router.get('/', (req, res, next) => {
     .then(users => res.json(users))
     .catch(next)
 })
+
+router.get('/car/make/12/model?color=mintgreen&doors=4')
