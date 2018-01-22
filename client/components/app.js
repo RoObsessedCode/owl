@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
-import {withRouter, Link} from 'react-router-dom'
-import {logout} from '../store'
+import { connect } from 'react-redux'
+import { withRouter, Link } from 'react-router-dom'
+import { logout } from '../store'
 
 /**
  * COMPONENT
@@ -11,31 +11,61 @@ import {logout} from '../store'
  *  rendered out by the component's `children`.
  */
 const App = (props) => {
-  const {children, handleClick, isLoggedIn} = props
-
+  const { children, handleClick, isLoggedIn } = props
   return (
-    <div>
-      <h1>owl</h1>
-      <button className="btn btn-primary">YO HIT THIS</button>
-      <nav>
-        {
-          isLoggedIn
-            ? <div>
-              {/* The navbar will show these links after you log in */}
+    <div >
+    <nav className="navbar navbar-expand-sm bg-dark navbar-dark fixed-top" style={{ position: 'inherit', borderBottom: 'blue' }}>
+      <div className="container" style={{ borderBottom: 'blue'}}>
+
+             <div>
+              <button className="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span className="navbar-toggler-icon"></span>
+              </button>
               <Link to="/home">Home</Link>
               <a href="#" onClick={handleClick}>Logout</a>
             </div>
-            : <div>
-              {/* The navbar will show these links before you log in */}
-              <Link to="/login">Login</Link>
-              <Link to="/signup">Sign Up</Link>
+
+             <div id="navbarCollapse" className="collapse navbar-collapse">
+              <ul className="navbar-nav ml-auto">
+                <li className="nav-item">
+                  <Link to="/login">Login</Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/signup">Sign Up</Link>
+                </li>
+              </ul>
             </div>
-        }
-      </nav>
-      <hr />
-      {children}
+
+      </div>
+
+    </nav>
+    <hr/>
+    {children}
     </div>
   )
+  // return (
+  //   <div>
+  //     <h1>owl</h1>
+  //     <button className="btn btn-primary">YO HIT THIS</button>
+  //     <nav>
+  //       {
+  //         isLoggedIn
+  //           ? <div>
+  //             {/* The navbar will show these links after you log in */}
+  //             <Link to="/home">Home</Link>
+  //             <a href="#" onClick={handleClick}>Logout</a>
+  //           </div>
+  //           : <div>
+  //             {/* The navbar will show these links before you log in */}
+  //             <Link to="/login">Loginnnn</Link>
+  //             <Link to="/signup">Sign Up</Link>
+  //           </div>
+  //       }
+  //     </nav>
+  //     <hr />
+  //     {children}
+  //   </div>
+  // )
 }
 
 /**
@@ -49,7 +79,7 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    handleClick () {
+    handleClick() {
       dispatch(logout())
     }
   }
